@@ -27,6 +27,6 @@ class Carrito {
     }
 
     getSumar() {
-        return this.carrito.reduce((acumular, producto) => { return acumular + (producto.unidad * producto.precio); }, 0);
+        return this.carrito.reduce((sumar, producto) => { return sumar + (producto.unidad * producto.precio); }, 0);
     }
 }

@@ -10,6 +10,7 @@ const btnGuardar = document.querySelector('#btnGuardar');
 const btnOrdenarMenor = document.querySelector('#btnOrdenarMenor');
 const btnOrdenarMayor = document.querySelector('#btnOrdenarMayor');
 
+
 const listaCarrito = JSON.parse( localStorage.getItem('carrito') ) || [];
 const carrito = new Carrito(listaCarrito); 
 
@@ -89,7 +90,7 @@ const renderProductos = (lista) => {
                             <p class="card-text"><small class="text-body-secondary">Rubro: ${producto.rubro}</small></p>
                             <h4 class="card-title">Precio: $${producto.precio}</h4>
                         </div>
-                        <button id="${producto.codigo}" class="agregarAlCarrito">Comprar</button>
+                        <button id="${producto.codigo}" class="btnAgregarAlCarrito">Comprar</button>
                     </div>
                 <div class="col-md-4">
                     <img src="${producto.img}" class="img-fluid rounded-start" alt="..."
@@ -105,23 +106,25 @@ const renderProductos = (lista) => {
     
     botones.forEach(boton => {
         boton.addEventListener('click', agregarAlCarrito);
+        
     });
+    console.log(botones);
 
 }
 
 const agregarAlCarrito = ( e )=> {
 
     const codigo = e.target.codigo;
-
     const producto = productos.find( item => item.codigo == codigo );
 
-    console.log(producto);
+    console.table(producto);
 
-    carrito.agregarAlCarrito(producto);
+    carrito.agregarAlCarrito( producto);
 
     carritoContar.innerText = carrito.getContar();
 
 }
+
 
 const renderCarrito = (lista) => {
 
