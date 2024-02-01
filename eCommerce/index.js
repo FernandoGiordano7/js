@@ -18,7 +18,7 @@ carritoContar.innerText = carrito.getContar();
 
 btnModal.addEventListener('click', function(){
     const lista = carrito.getProductos();
-    sumaCarrito.innerText = carrito.getSuma();
+    sumaCarrito.innerText = carrito.getSumar();
 
     renderCarrito( lista );
 
@@ -114,7 +114,7 @@ const renderProductos = (lista) => {
 
 const agregarAlCarrito = ( e )=> {
 
-    const codigo = e.target.codigo;
+    const codigo = e.target.id;
     const producto = productos.find( item => item.codigo == codigo );
 
     console.table(producto);
