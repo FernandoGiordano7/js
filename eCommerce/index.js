@@ -10,6 +10,7 @@ const btnGuardar = document.querySelector('#btnGuardar');
 const btnOrdenarMenor = document.querySelector('#btnOrdenarMenor');
 const btnOrdenarMayor = document.querySelector('#btnOrdenarMayor');
 
+let productos = [];
 
 const listaCarrito = JSON.parse( localStorage.getItem('carrito') ) || [];
 const carrito = new Carrito(listaCarrito); 
@@ -119,7 +120,7 @@ const agregarAlCarrito = ( e )=> {
 
     console.table(producto);
 
-    carrito.agregarAlCarrito( producto);
+    carrito.agregarAlCarrito(producto);
 
     carritoContar.innerText = carrito.getContar();
 
@@ -143,7 +144,29 @@ const renderCarrito = (lista) => {
     });
 }
 
-renderProductos(productos);
+const getProductos = async () => {
+
+    try {
+        const endPoint = 'productos.json';
+
+        const resp = await fetch(endPoint);
+
+        const json = await resp.json();
+
+        console.log(json);
+
+
+        const productos = json.productos
+        renderProductos(productos);
+    } catch (error) {
+        alert('error')
+    }
+
+
+}
+
+
+getProductos();
 
 
 
