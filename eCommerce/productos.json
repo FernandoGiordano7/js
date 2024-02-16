@@ -1,20 +1,14 @@
 {
-    "productos":[
-        {"codigo": 2136, "descripcion": "Compresor wabco 85mm","rubro": 1 ,"precio": 875000, "img": "./img/compresor wabco.png" },
+    "productos":
+    [
+        {"codigo": 2136, "descripcion": "Compresor wabco 85mm","rubro": "compresores" ,"precio": 875000, "img": "./img/compresor wabco.png" },
 
-        {"codigo": 5632, "descripcion": "Cintas de freno frasle","id_rubro": 2 , "precio": 220000, "img": "./img/frasle.jpg" },
+        {"codigo": 5632, "descripcion": "Cintas de freno frasle","rubro": "frenos" , "precio": 220000, "img": "./img/frasle.jpg" },
 
-        {"codigo": 4871, "descripcion": "Leyenda ford cargo", "id_rubro": 3, "precio": 52000, "img": "./img/leyenda ford cargo 1722.jfif" },
+        {"codigo": 4871, "descripcion": "Leyenda ford cargo", "rubro": "accesorios", "precio": 52000, "img": "./img/leyenda ford cargo 1722.jfif" },
 
-        {"codigo": 2875, "descripcion": "Luces colgantes para acoplado", "id_rubro": 4 ,"precio": 88000, "img": "./img/luces.jfif" },
+        {"codigo": 2875, "descripcion": "Luces colgantes para acoplado", "rubro": "luces" ,"precio": 88000, "img": "./img/luces.jfif" },
 
-        {"codigo": 7541, "descripcion": "Valvula 4 vias wabco","id_rubro": 2 , "precio": 245000, "img":"./img/valvula 4 vias.webp" }
-    ],
-
-    "rubro":[
-        {"id_rubro":1, "nombre":"Compresores"},
-        {"id_rubro":2, "nombre":"Frenos"},
-        {"id_rubro":3, "nombre":"Accesorios"},
-        {"id_rubro":4, "nombre":"Luces"}
+        {"codigo": 7541, "descripcion": "Valvula 4 vias wabco","rubro": "frenos" , "precio": 245000, "img":"./img/valvula 4 vias.webp" }
     ]
 }

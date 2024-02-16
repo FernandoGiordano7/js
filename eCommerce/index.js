@@ -10,9 +10,10 @@ const btnGuardar = document.querySelector('#btnGuardar');
 const btnOrdenarMenor = document.querySelector('#btnOrdenarMenor');
 const btnOrdenarMayor = document.querySelector('#btnOrdenarMayor');
 
-let productos = [];
+let productos_lista = [];
 
-const listaCarrito = JSON.parse( localStorage.getItem('carrito') ) || [];
+const listaCarrito = JSON.parse( localStorage.getItem('Carrito') ) || [];
+
 const carrito = new Carrito(listaCarrito); 
 
 carritoContar.innerText = carrito.getContar();
@@ -28,27 +29,33 @@ btnModal.addEventListener('click', function(){
 
 btnGuardar.addEventListener('click', ()=> {
 
+    const borrar = carrito.borrarCarrito();
+
+    renderCarrito(borrar);
+
     modal.hide();
+
     console.log('compra finalizada');
 
     localStorage.removeItem('carrito');
+    
 })
 
 btnCerrar.addEventListener('click', ()=> {
     modal.hide();
 })
 
-inputBuscar.addEventListener('input', (event) => {
+inputBuscar.addEventListener('input', (e) => {
 
-    const buscar = event.target.value; 
+    const buscar = e.target.value; 
 
-    const newLista = productos.filter(  (product) => product.descripcion.toLowerCase().includes( buscar.toLowerCase() )  );
-    renderProductos(newLista);
+    const nuevaLista = productos_lista.filter(  (producto) => producto.descripcion.toLowerCase().includes( buscar.toLowerCase() )  );
+    renderProductos(nuevaLista);
 })
 
 btnOrdenarMayor.addEventListener('click', ()=> {
 
-    productos.sort(  (a, b ) => {
+    productos_lista.sort(  (a, b ) => {
         if(  a.precio < b.precio  ){
             return 1
         }
@@ -58,12 +65,12 @@ btnOrdenarMayor.addEventListener('click', ()=> {
         return 0
     })
 
-    renderProductos(productos)
+    renderProductos(productos_lista)
     btnOrdenarMayor.setAttribute('disabled', true)
 })
 
 btnOrdenarMenor.addEventListener('click', ()=> {
-    productos.sort(  (a, b ) => {
+    productos_lista.sort(  (a, b ) => {
         if(  a.precio < b.precio ){
             return -1
         }
@@ -73,7 +80,7 @@ btnOrdenarMenor.addEventListener('click', ()=> {
         return 0
     })
 
-    renderProductos(productos)
+    renderProductos(productos_lista)
     btnOrdenarMenor.setAttribute('disabled', true)
 })
 
@@ -116,9 +123,9 @@ const renderProductos = (lista) => {
 const agregarAlCarrito = ( e )=> {
 
     const codigo = e.target.id;
-    const producto = productos.find( item => item.codigo == codigo );
+    const producto = productos_lista.find( item => item.codigo == codigo );
 
-    console.table(producto);
+    console.log(producto);
 
     carrito.agregarAlCarrito(producto);
 
@@ -155,13 +162,15 @@ const getProductos = async () => {
 
         console.log(json);
 
-
-        const productos = json.productos
+        const {productos} = json;
+        productos_lista = productos;
+        console.log(productos);
         renderProductos(productos);
-    } catch (error) {
-        alert('error')
-    }
 
+    } catch (error) {
+        alert('error');
+        console.log(error);
+    }
 
 }
 

@@ -4,7 +4,7 @@ class Carrito {
         this.carrito = lista;
     }
 
-    agregarAlCarrito({ codigo, descripcion, img, precio }) {
+    agregarAlCarrito({codigo, descripcion, img, precio }){
 
         const index = this.carrito.findIndex(producto => producto.codigo == codigo);
 
@@ -28,6 +28,12 @@ class Carrito {
 
     getSumar() {
         return this.carrito.reduce((sumar, producto) => { return sumar + (producto.unidad * producto.precio); }, 0);
+    }
+
+    borrarCarrito(){
+        listaProductosModal.innerHTML = '';
+        
+        localStorage.setItem('carrito', []);
     }
 
     
