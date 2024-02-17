@@ -31,6 +31,13 @@ btnGuardar.addEventListener('click', ()=> {
 
     const borrar = carrito.borrarCarrito();
 
+    
+    Swal.fire({
+        icon: "success",
+        title: "Compra finalizada",
+        text: "Su pedido fue realizada con exito, en breve estara en camino"
+    });
+
     renderCarrito(borrar);
 
     modal.hide();
@@ -70,6 +77,7 @@ btnOrdenarMayor.addEventListener('click', ()=> {
 })
 
 btnOrdenarMenor.addEventListener('click', ()=> {
+
     productos_lista.sort(  (a, b ) => {
         if(  a.precio < b.precio ){
             return -1
@@ -168,7 +176,11 @@ const getProductos = async () => {
         renderProductos(productos);
 
     } catch (error) {
-        alert('error');
+        Swal.fire({
+            icon: "error",
+            title: "Error",
+            text: "Ocurrio un error al renderizar los productos, porfavor espere"
+        });
         console.log(error);
     }
 

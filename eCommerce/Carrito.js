@@ -31,8 +31,9 @@ class Carrito {
     }
 
     borrarCarrito(){
-        listaProductosModal.innerHTML = '';
-        
+        carritoContar.innerHTML = '0';
+        sumaCarrito.innerHTML = '0';
+        listaProductosModal.innerHTML = ' ';
         localStorage.setItem('carrito', []);
     }
 
