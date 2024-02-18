@@ -27,26 +27,6 @@ btnModal.addEventListener('click', function(){
     modal.show();
 })
 
-btnGuardar.addEventListener('click', ()=> {
-
-    const borrar = carrito.borrarCarrito();
-
-    
-    Swal.fire({
-        icon: "success",
-        title: "Compra finalizada",
-        text: "Su pedido fue realizada con exito, en breve estara en camino"
-    });
-
-    renderCarrito(borrar);
-
-    modal.hide();
-
-    console.log('compra finalizada');
-
-    localStorage.removeItem('carrito');
-    
-})
 
 btnCerrar.addEventListener('click', ()=> {
     modal.hide();
@@ -158,6 +138,27 @@ const renderCarrito = (lista) => {
 
     });
 }
+
+btnGuardar.addEventListener('click', ()=> {
+
+    const borrar = carrito.borrarCarrito();
+
+    
+    Swal.fire({
+        icon: "success",
+        title: "Compra finalizada",
+        text: "Su pedido fue realizada con exito, en breve estara en camino"
+    });
+
+    renderCarrito(borrar);
+
+    modal.hide();
+
+    console.log('compra finalizada');
+
+    localStorage.removeItem('carrito');
+    
+})
 
 const getProductos = async () => {
 
